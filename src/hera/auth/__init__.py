@@ -44,7 +44,4 @@ class ArgoCLITokenGenerator(TokenGenerator):
                 "See `https://argoproj.github.io/argo-workflows/walk-through/argo-cli/` for more information"
             )
 
-        token = subprocess.check_output("argo auth token".split()).strip().decode()
-        if token.startswith("Bearer "):
-            token = token[7:]
-        return token
+        return subprocess.check_output("argo auth token".split()).strip().decode()
